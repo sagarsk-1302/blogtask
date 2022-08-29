@@ -71,10 +71,9 @@ class PostList(generic.ListView):
 def PostDetail(request,id):
     post = Post.objects.get(id=id)
     if(request.method=="POST"):
-        email = request.POST['email']
         body = request.POST["body"]
-        name = request.POST["name"]
-        newComment = Comments.objects.create(email=email,name=name,post=post,body=body)
+        user = request.user
+        newComment = Comments.objects.create(user=user,post=post,body=body)
         newComment.save()
     comments = Comments.objects.filter(post=post)
     count = comments.count()
