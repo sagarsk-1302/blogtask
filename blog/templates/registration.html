@@ -19,13 +19,13 @@
                 {% csrf_token %}
                 <br>
                 <p>Name</p>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" required>
                 <br>
                 <p>Email ID</p>
-                <input type="email" name="email" class="form-control">
+                <input type="email" name="email" class="form-control" required>
                 <br>
                 <p>Password</p>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control" required>
                 <hr>
                 <br>
                 <button type="submit" class="btn btn-success">Sign-up</button>

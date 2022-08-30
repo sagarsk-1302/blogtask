@@ -7,6 +7,7 @@ from django.views import generic
 from .models import Post,Comments
 from django.urls import reverse
 from django.views.generic import ListView
+import json
 # Create your views here.
 
 def user_login(request):
@@ -76,8 +77,10 @@ def PostDetail(request,id):
         newComment = Comments.objects.create(user=user,post=post,body=body)
         newComment.save()
     comments = Comments.objects.filter(post=post)
+    images = post.image_urls.get("images")
+    print(images)
     count = comments.count()
-    return render(request,"post_detail.html",{"comments":comments,"post":post,"count":count,"id":id})
+    return render(request,"post_detail.html",{"comments":comments,"post":post,"count":count,"id":id,"images":images})
 
 def Share(request):
     if(request.method=="POST"):

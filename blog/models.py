@@ -7,6 +7,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    image_urls = models.JSONField()
 
     class Meta:
         ordering = ['-created_on']
@@ -23,4 +24,4 @@ class Comments(models.Model):
     body = models.TextField()
 
     def __str__(self):
-        return self.name+"->"+self.post.title 
+        return self.user.username+"->"+self.post.title 

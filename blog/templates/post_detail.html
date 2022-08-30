@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block body %}
-
+<style>
+  .blog-image{
+    width: 100%;
+    
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="col-md-12 card mb-4  mt-3 left  top" style="border-radius: 15px;">
@@ -16,6 +21,13 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    {%for image in images%}
+    <div class="col-3">
+      <img src={{image}} alt="" class="blog-image">
+    </div>
+    {%endfor%}
+  </div>
   <p>{{count}} comments</p>
   {% for comment in comments %}
   <div class="card-body" style="border-radius: 15px;background-color:rgba(255, 255, 255, 0.062);">
@@ -30,7 +42,7 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="body" class="form-label">Comment</label>
-      <textarea name="body" id="body" cols="30" rows="3" class="form-control"></textarea><br>
+      <textarea name="body" id="body" cols="30" rows="3" class="form-control" required></textarea><br>
       <input type="submit" value="submit" class="btn btn-danger">
     </div>
   </form>
